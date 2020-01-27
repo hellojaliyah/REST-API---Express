@@ -1,27 +1,31 @@
-//RESTful Services & APIs
-//Client server architecture
-
-//client = front end
-//server = backend, services accessible through http protocol
-//REST - representational state transfer
-//REST is a convention for building the http services as in the CRUD operations
-//CRUD = Create, Read, Update, + Delete
+const http = require('http');
 
 
-//REAL LIFE
-////Client app manages list of customers
-//http://vidly.com/api/customers  -- "customers" is referred to as the resource
-//This url is where the server will expose the endpoint for customers to use
-//Customers send http req to the endpoint to  communicate with Servre
+//Callback function 
+const server = http.createServer((req, res) => {
+    if (req.url ==='/') {
+        res.write('Hello World');
+        res.end();
+    }
 
 
-//Every http method has a different intention - get, post, put, + delete
+//Defining various routes in app
+    if (req.url === '/api/courses') {
 
-//GET may return an array of customer objects
-//DELETE may delete a customer object
-//POST may add a customer to the database object
-//PUT may update a customers info
+        //How we respong to client
+        res.write(JSON.stringify([1, 2, 3]));
+        res.end();
+    }
+});
 
 
-//We will use Express to manage this, without using a database to reduce any complexity 
 
+//This method works, but is not maintainable
+//This is when a framework is applied to give a proper structure and keep the code maintainable
+//Many frameworks, Express happens to be popular
+
+//How-To-Set-Up:
+//npm init--yes
+//npm i express
+
+server.listen(3000);
