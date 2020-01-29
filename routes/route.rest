@@ -1,0 +1,9 @@
+
+POST http://localhost:3000/subscribers/
+Content-Type: application/json
+
+{
+    "name": "Awesome",
+    "subscribedToChannel": "Web Dev Simplified"
+
+}
