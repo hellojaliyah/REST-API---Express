@@ -1,31 +1,37 @@
-const http = require('http');
+//LOAD EXPRESS
+const express = require('express');
+
+//BY CONVENTION THE FUNTION IS STORED WITH APP
+const app = express();
+
+//MIDDLEWARE BBY!
+//enable parsing of JSON objects in body
+app.use(express.json())
 
 
-//Callback function 
-const server = http.createServer((req, res) => {
-    if (req.url ==='/') {
-        res.write('Hello World');
-        res.end();
-    }
-
-
-//Defining various routes in app
-    if (req.url === '/api/courses') {
-
-        //How we respong to client
-        res.write(JSON.stringify([1, 2, 3]));
-        res.end();
-    }
+app.get('/', (req, res) => {
+res.send('Hello World!')
 });
 
+app.get('/api/courses', (req, res) => {
+    res.send([1, 2, 3])
+})
 
 
-//This method works, but is not maintainable
-//This is when a framework is applied to give a proper structure and keep the code maintainable
-//Many frameworks, Express happens to be popular
+//new route hander
+app.post('/api/courses', (req, res) => {
+    const course = {
+        id: courses.length + 1,
+        name: req.body.name,
+    };
 
-//How-To-Set-Up:
-//npm init--yes
-//npm i express
+    //push the new object into array
+    courses.push(course);
+    //by convention post object to server; it should return the object in the body of the response
+    res.send(course);
+    //because the client needs to know the id of the new object
+})
+app.listen(3000, () => console.log('listening on port 3000'));
 
-server.listen(3000);
+
+//
