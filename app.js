@@ -83,6 +83,20 @@ function validateCourse(course) {
 };
 
 
+app.delete('/api/coourses/:id', (req, res) => {
+    //Look up course
+    //Return 404 if non-existing
+const course = courses.find(c => c.id === parseInt(req.params.id));
+if (!course) res.status(404).send('The course with the given ID does not exist')
+
+    //delete
+const index = courses.indexOf(course)
+courses.splice(index, 1);
+
+    //return same course
+    res.send(course);
+})
+
 app.listen(3000, () => console.log('listening on port 3000'));
 
 
