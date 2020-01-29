@@ -1,11 +1,15 @@
 Node Mosh Tutorial
 Express
 
-//CALL AN ENDPOINT USING POSTMAN
+//Input Validation
 
-//if status of request is 200, then request was handled successfully
+//Security best practice:
+Never
+Never
+Never trust client output
 
-//Use postman to test http services
+//You should:
+create validation logic
 
 
-//NEXT IS INPUT VALIDATION
+//installed joi

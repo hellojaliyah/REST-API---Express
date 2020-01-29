@@ -1,8 +1,12 @@
+//DEPENDENCIES
+
 //LOAD EXPRESS
 const express = require('express');
 
 //BY CONVENTION THE FUNTION IS STORED WITH APP
 const app = express();
+//Load the installed module
+const Joi = require('joi');
 
 //MIDDLEWARE BBY!
 //enable parsing of JSON objects in body
@@ -20,16 +24,28 @@ app.get('/api/courses', (req, res) => {
 
 //new route hander
 app.post('/api/courses', (req, res) => {
+    const schema = {
+        name: Joi.string().min(3).required()
+    };
+    
+    const result = Joi.validate(req.body, schema);
+    console.log(result)
+
+    //validation logic
+    //Let's replace with join
+    if (result.error) {
+        //400 Bad Request
+        res.status(400).send(result.error.details[0].message) //sends message instead of object
+        return;
+    }
+    
     const course = {
         id: courses.length + 1,
         name: req.body.name,
     };
 
-    //push the new object into array
     courses.push(course);
-    //by convention post object to server; it should return the object in the body of the response
     res.send(course);
-    //because the client needs to know the id of the new object
 })
 app.listen(3000, () => console.log('listening on port 3000'));
 
