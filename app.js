@@ -94,7 +94,7 @@ const index = courses.indexOf(course)
 courses.splice(index, 1);
 
     //return same course
-    res.send(course);
+    res.send(course); h
 })
 
 app.listen(3000, () => console.log('listening on port 3000'));
