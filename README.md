@@ -6,3 +6,5 @@ Middleware funtion takes request object and returns a response to the client, OR
 
 
 The response will terminate the req, res cycle
+
+You can add 'next' to the function to terminate the req, res cycle without sending
