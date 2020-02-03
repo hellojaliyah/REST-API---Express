@@ -1,3 +1,4 @@
+const config = require('config')
 const Joi = require('joi')
 const logger = require('./logger')
 const express = require('express')
@@ -10,6 +11,12 @@ app.use(express.json())  //to use req.body
 app.use(express.urlencoded({extended: true})) //parses income req key value pairs
 app.use(express.static('public')) //static assets go here
 app.use(helmet())
+
+//configs
+console.log('Application Name: ' + config.get('name'))
+console.log('Mail Server: ' + config.get('mail.host'))
+console.log('Mail Password: ' + config.get('mail.password'))
+
 
 if(app.get('env') === 'development') {
 app.use(morgan('tiny'))
