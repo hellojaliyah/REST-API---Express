@@ -2,6 +2,11 @@ Advanced Topics of Express
 
 PACKAGE CONFIG
 
-npmjs.com/package/config
+This demo show how to create debugging functions
 
-Mangaes configurations of application
+
+can be created in terminal like:
+export DEBUG=app:startup
+
+purpose??
+shorter than console.log statements

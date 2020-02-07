@@ -5,7 +5,8 @@ const express = require('express')
 const app = express();
 const helmet = require('helmet')
 const morgan = require('morgan')
-
+const debug = require('debug')('app:startup')
+const secretConfig = require('./config/custom-enviroment-variables.json')
 
 app.use(express.json())  //to use req.body
 app.use(express.urlencoded({extended: true})) //parses income req key value pairs
@@ -15,12 +16,12 @@ app.use(helmet())
 //configs
 console.log('Application Name: ' + config.get('name'))
 console.log('Mail Server: ' + config.get('mail.host'))
-console.log('Mail Password: ' + config.get('mail.password'))
+// console.log('Mail Password: ' + secretConfig.get('mail.password'))
 
 
 if(app.get('env') === 'development') {
 app.use(morgan('tiny'))
-console.log('Morgan enabled...')
+debug('Morgan enabled...') //shorter than console.log statements
 }
 
 
