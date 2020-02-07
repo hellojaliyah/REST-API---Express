@@ -1,12 +1,16 @@
 Advanced Topics of Express
 
-Template engines
--pug
--mustache
--ejs
+Authentication
 
-each template engine has different packs for generating dynamic html and returning it to client
+authentication is outside scope of express
 
-for this example we use PUG
+express is lightweight and minimal
 
-when building RESTful services in backend you dont need a viewengine this is just to make this course more comprehensive
+
+-------------------------------
+
+This branch focuses on following along with the video to export routes independantly. Also, set up of CRUD methods.
+
+
+url: 
+https://drive.google.com/drive/u/3/folders/1ivQ-DrzPOTZQBR-MAO1hkivczdNil8Hk

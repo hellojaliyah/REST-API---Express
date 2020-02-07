@@ -7,11 +7,15 @@ const helmet = require('helmet')
 const morgan = require('morgan')
 const debug = require('debug')('app:startup')
 const secretConfig = require('./config/custom-enviroment-variables.json')
+const genres = require('./routes/genre.js')
+
 
 //SET VIEW ENGINE FOR APPLICATION
 app.set('view engine', 'pug');
 app.set('views', './views') //all templates should go here (although this is optional)
 
+
+app.use('/api/genres', genres)
 
 app.use(express.json())  //to use req.body
 app.use(express.urlencoded({extended: true})) //parses income req key value pairs
@@ -32,11 +36,6 @@ debug('Morgan enabled...') //shorter than console.log statements
 
 app.use(logger)
 
-const courses = [
-    {id: 1, name: 'course1'},
-    {id: 2, name: 'course2'},
-    {id: 3, name: 'course3'},
-];
 
 //returning html mark up to client
 app.get('/', (req, res) => {
