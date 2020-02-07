@@ -1,12 +1,12 @@
 Advanced Topics of Express
 
-PACKAGE CONFIG
+Template engines
+-pug
+-mustache
+-ejs
 
-This demo show how to create debugging functions
+each template engine has different packs for generating dynamic html and returning it to client
 
+for this example we use PUG
 
-can be created in terminal like:
-export DEBUG=app:startup
-
-purpose??
-shorter than console.log statements
+when building RESTful services in backend you dont need a viewengine this is just to make this course more comprehensive

@@ -8,6 +8,11 @@ const morgan = require('morgan')
 const debug = require('debug')('app:startup')
 const secretConfig = require('./config/custom-enviroment-variables.json')
 
+//SET VIEW ENGINE FOR APPLICATION
+app.set('view engine', 'pug');
+app.set('views', './views') //all templates should go here (although this is optional)
+
+
 app.use(express.json())  //to use req.body
 app.use(express.urlencoded({extended: true})) //parses income req key value pairs
 app.use(express.static('public')) //static assets go here
@@ -33,8 +38,9 @@ const courses = [
     {id: 3, name: 'course3'},
 ];
 
+//returning html mark up to client
 app.get('/', (req, res) => {
-    res.send('Hello World')
+    res.render('index', { title: 'My express app', message: 'Hello'})
 });
 
 app.get('/api/courses', (req, res) => {
